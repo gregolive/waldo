@@ -1,6 +1,6 @@
 header {
   background: var(--white);
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid var(--black);
   padding: 0 3vw;
   height: 3rem;
   display: flex;

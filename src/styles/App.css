@@ -12,6 +12,13 @@ h1, h2, h3 {
 }
 
 section {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--white),
+    var(--white) 1.25rem,
+    var(--red) 1.25rem,
+    var(--red) 2.5rem
+  );
   box-sizing: border-box;
   min-height: calc(100vh - 5rem - 1px);
   padding: 2rem 3vw;

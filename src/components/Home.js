@@ -1,5 +1,12 @@
-import { Link } from "react-router-dom";
 import '../styles/Home.css';
+import MapIcon from './MapIcon';
+
+import skiSlopes from '../img/maps/ski-slopes.jpeg';
+import yeOldeDodgeball from '../img/maps/ye-olde-dodgeball.jpeg';
+import outerSpace from '../img/maps/outer-space.jpeg';
+import fruitFight from '../img/maps/fruit-fight.jpeg';
+import greatEscape from '../img/maps/great-escape.jpeg';
+import siegeOfTroy from '../img/maps/siege-of-troy.jpeg';
 
 const Home = () => {
   return (
@@ -7,35 +14,12 @@ const Home = () => {
       <h2 className='Card Title'>Choose a map to start!</h2>
 
       <div className='MapGrid'>
-        <Link to='' className='Card MapIcon'>
-          <img src={require('../img/maps/ski.jpeg')} alt='skiing map'/>
-          <h3>SKI SLOPES</h3>
-        </Link>
-
-        <Link to='' className='Card MapIcon'>
-          <img src={require('../img/maps/dodgeball.jpeg')} alt='dodgeball map'/>
-          <h3>YE OLDE DODGEBALL</h3>
-        </Link>
-
-        <Link to='' className='Card MapIcon'>
-          <img src={require('../img/maps/space.jpeg')} alt='space map'/>
-          <h3>OUTER SPACE</h3>
-        </Link>
-
-        <Link to='' className='Card MapIcon'>
-          <img src={require('../img/maps/fruits.jpeg')} alt='fruits map'/>
-          <h3>FRUIT FIGHT</h3>
-        </Link>
-
-        <Link to='' className='Card MapIcon'>
-          <img src={require('../img/maps/maze.jpeg')} alt='maze map'/>
-          <h3>THE GREAT ESCAPE</h3>
-        </Link>
-
-        <Link to='' className='Card MapIcon'>
-          <img src={require('../img/maps/castle.jpeg')} alt='castle map'/>
-          <h3>SIEGE OF TROY</h3>
-        </Link>
+        <MapIcon name='SKI SLOPES' img={skiSlopes} difficulty={1} highScore={49} />
+        <MapIcon name='YE OLDE DODGEBALL' img={yeOldeDodgeball} difficulty={2} highScore={43} />
+        <MapIcon name='OUTER SPACE' img={outerSpace} difficulty={3} highScore={266} />
+        <MapIcon name='FRUIT FIGHT' img={fruitFight} difficulty={4} highScore={545} />
+        <MapIcon name='THE GREAT ESCAPE' img={greatEscape} difficulty={5} highScore={754} />
+        <MapIcon name='SIEGE OF TROY' img={siegeOfTroy} difficulty={5} highScore={475} />
       </div>
     </section>
   )
