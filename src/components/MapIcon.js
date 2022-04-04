@@ -13,7 +13,7 @@ const MapIcon = ({ map }) => {
           Difficulty:
           &#160;
           <span className='Bubble Difficulty'>
-            {[...Array(map.difficulty)].map((d, i) => <i className='fa-solid fa-magnifying-glass' key={i}></i>)}
+            {[...Array(map.difficulty)].map((d, i) => <i className='fa-solid fa-star' key={i}></i>)}
           </span>
         </span>
 

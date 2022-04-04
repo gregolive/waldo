@@ -5,7 +5,7 @@ import maps from '../helpers/helpers';
 const Home = () => {
   return (
     <section className='Home'>
-      <h2 className='Card Title'>Choose a map to start!</h2>
+      <h2 className='Card TitleCard'>Choose a map to start!</h2>
 
       <div className='MapGrid'>
         {maps.map((m) => 

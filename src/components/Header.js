@@ -3,7 +3,7 @@ import '../styles/Header.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className='SiteHeader'>
       <Link to='/'>
         <h1>WHERE'S <span>WALDO?</span></h1>
       </Link>

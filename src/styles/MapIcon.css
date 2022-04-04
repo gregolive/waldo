@@ -2,6 +2,11 @@
   padding: 1rem 1rem 0.5rem 1rem;
   display: grid;
   gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.MapIcon:hover {
+  box-shadow: -2px 2px 0 rgba(0, 0, 0, 0.5);
 }
 
 .MapIcon > img {
@@ -18,23 +23,6 @@
 .MapInfo > span {
   display: flex;
   align-items: center;
-}
-
-.Bubble {
-  color: var(--white);
-  font-size: 0.7rem;
-  border-radius: 0.5rem;
-  padding: 0.3rem 0.3rem;
-  display: flex;
-  gap: 0.25rem;
-}
-
-.Difficulty {
-  background: var(--red);
-}
-
-.HighScore {
-  background: var(--blue);
 }
 
 h3 {

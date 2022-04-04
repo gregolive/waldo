@@ -1,0 +1,83 @@
+.Level {
+  padding: 2rem 10vw;
+}
+
+.LevelCard {
+  padding: calc(0.5rem + 2vw);
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.LevelHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.LevelHeader > span {
+  font-size: calc(0.5rem + 0.8vw);
+  display: flex;
+  align-items: center;
+}
+
+.LevelHeader > span > .Bubble {
+  font-size: calc(0.5rem + 0.5vw);
+}
+
+.LevelHeader > h2 {
+  font-size: calc(1rem + 1vw);
+}
+
+.LevelMain {
+  display: grid;
+  grid-template: 1fr / 5.5rem 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Characters {
+  display: grid;
+  gap: 1rem;
+  grid-template: repeat(4, 1fr) / 1fr;
+}
+
+.Characters > * {
+  width: 100%;
+  border: 1px solid var(--black);
+}
+
+.Map {
+  width: 100%;
+  border: 1px solid var(--black);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .Level {
+    padding: 2rem 3vw;
+  }
+
+  .LevelMain {
+    grid-template: 1fr 5rem / 1fr;
+    align-items: start;
+  }
+
+  .Characters {
+    grid-template: 1fr / repeat(4, 5rem);
+    justify-content: center;
+    grid-row: 2 / -1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .LevelMain {
+    grid-template: 1fr 4rem / 1fr;
+    gap: 0.5rem;
+  }
+
+  .Characters {
+    grid-template: 1fr / repeat(4, 4rem);
+    gap: 0.5rem;
+  }
+}
