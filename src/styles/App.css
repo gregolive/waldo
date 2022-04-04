@@ -7,7 +7,7 @@ a {
   text-decoration: none;
 }
 
-h1, h2 {
+h1, h2, h3 {
   margin: 0;
 }
 
@@ -16,14 +16,21 @@ section {
   min-height: calc(100vh - 5rem - 1px);
   padding: 2rem 3vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 2rem;
 }
 
-.TitleCard {
+.Card {
   background: var(--white);
   border: 2px solid var(--black);
   box-shadow: -8px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.Title {
+  font-size: 1.6rem;
   padding: 0.5rem 1rem;
+  align-self: center;
 }
 
 @media screen and (max-width: 480px) {
