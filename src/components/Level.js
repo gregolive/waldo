@@ -36,12 +36,24 @@ const Level = () => {
 
         <div className='LevelMain'>
           <div className='Characters'>
-            <img src={waldo} alt='waldo' />
-            <img src={wilma} alt='wilma' />
-            <img src={wizard} alt='wizard whitebeard' />
-            <img src={odlaw} alt='odlaw' />
+            <span>
+              <span className='Check'><i className='fa-solid fa-check Found'></i></span>
+              <img src={waldo} alt='waldo' />
+            </span>
+            <span>
+              <span className='Check'><i className='fa-solid fa-check'></i></span>
+              <img src={wilma} alt='wilma' />
+            </span>
+            <span>
+              <span className='Check'><i className='fa-solid fa-check'></i></span>
+              <img src={wizard} alt='wizard whitebeard' />
+            </span>
+            <span>
+              <span className='Check'><i className='fa-solid fa-check'></i></span>
+              <img src={odlaw} alt='odlaw' />
+            </span>
           </div>
-          
+
           <img src={map.img} alt={map.name} className='Map'/>
         </div>
       </div>

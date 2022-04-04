@@ -3,7 +3,7 @@
 }
 
 .LevelCard {
-  padding: calc(0.5rem + 2vw);
+  padding: calc(0.5rem + 1vw);
   display: grid;
   justify-items: center;
   gap: 1rem;
@@ -42,9 +42,34 @@
   grid-template: repeat(4, 1fr) / 1fr;
 }
 
-.Characters > * {
-  width: 100%;
+.Characters > span {
   border: 1px solid var(--black);
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  position: relative;
+}
+
+.Check {
+  color: var(--success);
+  opacity: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.Check > svg {
+  height: 100%;
+  width: 100%;
+}
+
+.Check.Found {
+  opacity: 0.8;
+}
+
+.Characters > span > * {
+  width: 100%;
 }
 
 .Map {
@@ -71,6 +96,10 @@
 }
 
 @media screen and (max-width: 768px) {
+  .LevelCard {
+    gap: 0.5rem;
+  }
+
   .LevelMain {
     grid-template: 1fr 4rem / 1fr;
     gap: 0.5rem;
