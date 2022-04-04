@@ -1,0 +1,13 @@
+.Home {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--white),
+    var(--white) 1.25rem,
+    var(--red) 1.25rem,
+    var(--red) 2.5rem
+  );
+}
+
+.MapGrid {
+  display: grid;
+}

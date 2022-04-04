@@ -1,0 +1,15 @@
+footer {
+  background-color: var(--light-gray);
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer > p {
+  font-size: 0.9rem;
+}
+
+footer > p > a:hover {
+  text-decoration: underline;
+}

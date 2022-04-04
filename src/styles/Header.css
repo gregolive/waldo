@@ -14,9 +14,15 @@ h1 {
   letter-spacing: 2px;
   text-shadow: 1px 1px 0 var(--black),
                -2px 3px 0 var(--gray);
-  margin: 0;
 }
 
 h1 > span {
   color: var(--red);
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    padding: 0;
+    justify-content: center;
+  }
 }
