@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/:levelName' element={<Level />} />
+        <Route path='/:mapId' element={<Level />} />
       </Routes>
       <Footer />
     </Router>

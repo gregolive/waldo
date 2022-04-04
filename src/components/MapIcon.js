@@ -2,17 +2,18 @@ import { Link } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/js/all';
 import '../styles/MapIcon.css';
 
-const MapIcon = ({ name, img, difficulty, highScore }) => {
+const MapIcon = ({ map }) => {
+  console.log(map.id)
   return (
-    <Link to='ski-slopes' className='Card MapIcon'>
-      <img src={img} alt={name}/>
+    <Link to={map.id} className='Card MapIcon'>
+      <img src={map.img} alt={map.name}/>
 
       <div className='MapInfo'>
         <span>
           Difficulty:
           &#160;
           <span className='Bubble Difficulty'>
-            {[...Array(difficulty)].map((d, i) => <i className='fa-solid fa-magnifying-glass' key={i}></i>)}
+            {[...Array(map.difficulty)].map((d, i) => <i className='fa-solid fa-magnifying-glass' key={i}></i>)}
           </span>
         </span>
 
@@ -20,12 +21,12 @@ const MapIcon = ({ name, img, difficulty, highScore }) => {
           High score:
           &#160;
           <span className='Bubble HighScore'>
-            {highScore} s  
+            {map.highScore} s  
           </span>
         </span>
       </div>
 
-      <h3>{ name }</h3>
+      <h3>{map.name}</h3>
     </Link>
   );
 };
