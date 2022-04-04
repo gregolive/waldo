@@ -1,0 +1,22 @@
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray);
+  padding: 0 3vw;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: var(--blue);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 var(--black),
+               -2px 3px 0 var(--gray);
+  margin: 0;
+}
+
+h1 > span {
+  color: var(--red);
+}
