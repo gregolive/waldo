@@ -72,9 +72,13 @@
   width: 100%;
 }
 
+.MapButton {
+  border: 1px solid var(--black);
+  display: flex;
+}
+
 .Map {
   width: 100%;
-  border: 1px solid var(--black);
   cursor: pointer;
 }
 

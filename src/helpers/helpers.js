@@ -25,3 +25,34 @@ const maps = [
 ];
 
 export default maps;
+
+const clickCoords = (e) => {
+  const mapX = e.target.offsetWidth;
+  const mapY = e.target.offsetHeight;
+  const clickX = e.nativeEvent.offsetX;
+  const clickY = e.nativeEvent.offsetY;
+  return [(clickX / mapX), (clickY / mapY)];
+};
+
+const withinRange = (guess, target) => {
+  console.log(guess);
+  console.log(target);
+  const range = 0.1;
+  if (guess[0] > (target[0] - range) && guess[0] < (target[0] + range)) {
+    if (guess[1] > (target[1] - range) && guess[1] < (target[1] + range)) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const checkGuess = (e) => {
+  const guess = clickCoords(e);
+  const characters = [{id: 'odlaw', pos: [0.318, 0.635]}];
+  for (const char of characters) {
+    if (withinRange(guess, char.pos)) { return char.id; }
+  };
+  return false;
+};
+
+export { checkGuess };

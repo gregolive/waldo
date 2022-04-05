@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import '../styles/Level.css';
-import maps from '../helpers/helpers';
+import maps, { checkGuess } from '../helpers/helpers';
 
 import waldo from '../img/characters/waldo.jpg';
 import wilma from '../img/characters/wilma.jpg';
@@ -10,6 +10,11 @@ import odlaw from '../img/characters/odlaw.jpg';
 const Level = () => {
   const { mapId } = useParams();
   const map = maps.filter((m) => m.id === mapId)[0];
+
+  const handleClick = (e) => {
+    const result = checkGuess(e);
+    console.log(result);
+  };
 
   return (
     <section className='Level'>
@@ -54,7 +59,9 @@ const Level = () => {
             </span>
           </div>
 
-          <img src={map.img} alt={map.name} className='Map'/>
+          <button type='button' className='MapButton' onClick={(e) => handleClick(e)}>
+            <img src={map.img} alt={map.name} className='Map' />
+          </button>
         </div>
       </div>
     </section>
