@@ -67,6 +67,7 @@ const Level = () => {
 
         <div className='LevelMain'>
           <div className='Characters'>
+            <Timer />
             {(characters) ? characters.map((character) =>
               <span key={character.id}>
                 <span className={(found.includes(character.slug)) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
@@ -77,7 +78,7 @@ const Level = () => {
 
           <button type='button' className='MapButton' onClick={(e) => handleClick(e)}>
             {circles.map((circle) =>
-              <img src={require('../img/circle.png')} alt='' className='Circle' style={circle} />
+              <img src={require('../img/circle.png')} alt='' className='Circle' style={circle.style} key={circle.id} />
             )}
             {(Object.keys(map).length > 0) ? <img src={require(`../img/maps/${map.slug}.jpeg`)} alt={map.name} className='Map' /> : null}
           </button>

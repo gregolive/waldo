@@ -31,7 +31,7 @@
 
 .LevelMain {
   display: grid;
-  grid-template: 1fr / 5.5rem 1fr;
+  grid-template: 1fr / 5rem 1fr;
   align-items: center;
   gap: 1rem;
 }
@@ -39,7 +39,7 @@
 .Characters {
   display: grid;
   gap: 1rem;
-  grid-template: repeat(4, 1fr) / 1fr;
+  grid-template: auto repeat(4, 1fr) / 1fr;
 }
 
 .Characters > span {
@@ -99,7 +99,7 @@
   }
 
   .Characters {
-    grid-template: 1fr / repeat(4, 5rem);
+    grid-template: 1fr / 5rem repeat(4, 5rem);
     justify-content: center;
     grid-row: 2 / -1;
   }
@@ -116,7 +116,7 @@
   }
 
   .Characters {
-    grid-template: 1fr / repeat(4, 4rem);
+    grid-template: 1fr / repeat(5, 4rem);
     gap: 0.5rem;
   }
 }
@@ -128,5 +128,9 @@
 
   .LevelHeader > h2 {
     font-size: calc(1rem);
+  }
+
+  .Characters {
+    grid-template: 1fr / repeat(5, 3.5rem);
   }
 }
