@@ -6,6 +6,12 @@ import fruitFight from '../img/maps/fruit-fight.jpeg';
 import greatEscape from '../img/maps/great-escape.jpeg';
 import siegeOfTroy from '../img/maps/siege-of-troy.jpeg';
 
+// Character images
+import waldo from '../img/characters/waldo.jpg';
+import wilma from '../img/characters/wilma.jpg';
+import wizard from '../img/characters/wizard.jpg';
+import odlaw from '../img/characters/odlaw.jpg';
+
 // Map character locations
 const skiSlopesCoords = [[0.855, 0.740], [0.490, 0.422], [0.070, 0.758], [0.318, 0.635]];
 const yeOldeDodgeballCoords = [[0.961, 0.064], [0.282, 0.666], [0.295, 0.416], [0.921, 0.587]];
@@ -15,9 +21,11 @@ const greatEscapeCoords = [[0.561, 0.428], [0.763, 0.532], [0.675, 0.294], [0.43
 const siegeOfTroyCoords = [[0.169, 0.844], [0.757, 0.763], [0.288, 0.135], [0.864, 0.821]];
 
 class Character {
-  constructor(id, coords) {
+  constructor(id, coords, img) {
     this.id = id;
     this.coords = coords;
+    this.img = img;
+    this.found = false;
   }
 };
 
@@ -29,10 +37,10 @@ class Map {
     this.difficulty = difficulty;
     this.highScore = highScore;
     this.characters = [
-      new Character('waldo', characterCoords[0]),
-      new Character('wilma', characterCoords[1]),
-      new Character('wizard', characterCoords[2]),
-      new Character('odlaw', characterCoords[3]),
+      new Character('waldo', characterCoords[0], waldo),
+      new Character('wilma', characterCoords[1], wilma),
+      new Character('wizard', characterCoords[2], wizard),
+      new Character('odlaw', characterCoords[3], odlaw),
     ];
   };
 };
@@ -57,8 +65,6 @@ const clickCoords = (e) => {
 };
 
 const withinRange = (guess, target) => {
-  console.log(guess);
-  console.log(target);
   const range = 0.02;
   if (guess[0] > (target[0] - range) && guess[0] < (target[0] + range)) {
     if (guess[1] > (target[1] - range) && guess[1] < (target[1] + range)) {

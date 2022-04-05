@@ -2,18 +2,16 @@ import { useParams } from 'react-router-dom';
 import '../styles/Level.css';
 import maps, { checkGuess } from '../helpers/helpers';
 
-import waldo from '../img/characters/waldo.jpg';
-import wilma from '../img/characters/wilma.jpg';
-import wizard from '../img/characters/wizard.jpg';
-import odlaw from '../img/characters/odlaw.jpg';
-
 const Level = () => {
   const { mapId } = useParams();
   const map = maps.filter((m) => m.id === mapId)[0];
 
   const handleClick = (e) => {
-    const result = checkGuess(e, map);
-    console.log(result);
+    const characterId = checkGuess(e, map);
+    if (characterId) {
+      const target = map.characters.find((char) => char.id === characterId);
+      target.found = true;
+    }
   };
 
   return (
@@ -41,22 +39,12 @@ const Level = () => {
 
         <div className='LevelMain'>
           <div className='Characters'>
-            <span>
-              <span className='Check'><i className='fa-solid fa-check Found'></i></span>
-              <img src={waldo} alt='waldo' />
-            </span>
-            <span>
-              <span className='Check'><i className='fa-solid fa-check'></i></span>
-              <img src={wilma} alt='wilma' />
-            </span>
-            <span>
-              <span className='Check'><i className='fa-solid fa-check'></i></span>
-              <img src={wizard} alt='wizard whitebeard' />
-            </span>
-            <span>
-              <span className='Check'><i className='fa-solid fa-check'></i></span>
-              <img src={odlaw} alt='odlaw' />
-            </span>
+            {map.characters.map((char) =>
+              <span key={char.id}>
+                <span className={(char.found) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
+                <img src={char.img} alt='waldo' />
+              </span>
+            )}
           </div>
 
           <button type='button' className='MapButton' onClick={(e) => handleClick(e)}>
