@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import '@fortawesome/fontawesome-free/js/all';
 import '../styles/MapIcon.css';
 
 const MapIcon = ({ map }) => {
