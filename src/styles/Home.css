@@ -9,3 +9,9 @@
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 2rem;
 }
+
+@media screen and (max-width: 480px) {
+  .MapGrid {
+    grid-template-columns: repeat(auto-fit, minmax(100vw, 1fr));
+  }  
+}

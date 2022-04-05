@@ -3,7 +3,6 @@ import '@fortawesome/fontawesome-free/js/all';
 import '../styles/MapIcon.css';
 
 const MapIcon = ({ map }) => {
-  console.log(map.id)
   return (
     <Link to={map.id} className='Card MapIcon'>
       <img src={map.img} alt={map.name}/>

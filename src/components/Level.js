@@ -12,7 +12,7 @@ const Level = () => {
   const map = maps.filter((m) => m.id === mapId)[0];
 
   const handleClick = (e) => {
-    const result = checkGuess(e);
+    const result = checkGuess(e, map);
     console.log(result);
   };
 
