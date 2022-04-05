@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { checkGuess, getCircleStyle } from '../helpers/helpers';
 import '../styles/Level.css';
-import { checkGuess } from '../helpers/helpers';
 import Loading from './Loading';
+import Timer from './Timer';
 
 const Level = () => {
   const { mapSlug } = useParams();
@@ -10,6 +11,7 @@ const Level = () => {
   const [map, setMap] = useState({});
   const [characters, setCharacters] = useState([]);
   const [found, setFound] = useState([]);
+  const [circles, setCircles] = useState([]);
 
   // Fetch map data for selected level
   useEffect(() => {
@@ -35,6 +37,8 @@ const Level = () => {
     const character = checkGuess(e, characters);
     if (character && !found.includes(character.slug)) {
       setFound(found.concat(character.slug));
+      const newCircle = getCircleStyle(character);
+      setCircles(circles.concat(newCircle));
     }
   };
 
@@ -72,6 +76,9 @@ const Level = () => {
           </div>
 
           <button type='button' className='MapButton' onClick={(e) => handleClick(e)}>
+            {circles.map((circle) =>
+              <img src={require('../img/circle.png')} alt='' className='Circle' style={circle} />
+            )}
             {(Object.keys(map).length > 0) ? <img src={require(`../img/maps/${map.slug}.jpeg`)} alt={map.name} className='Map' /> : null}
           </button>
         </div>

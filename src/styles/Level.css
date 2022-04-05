@@ -75,11 +75,17 @@
 .MapButton {
   border: 1px solid var(--black);
   display: flex;
+  position: relative;
 }
 
 .Map {
   width: 100%;
   cursor: pointer;
+}
+
+.Circle {
+  position: absolute;
+  height: 40px;
 }
 
 @media screen and (max-width: 1024px) {

@@ -7,7 +7,7 @@ const clickCoords = (e) => {
 };
 
 const withinRange = (guessX, guessY, targetX, targetY) => {
-  const range = 20;
+  const range = 10;
   if (guessX > (targetX - range) && guessX < (targetX + range)) {
     if (guessY > (targetY - range) && guessY < (targetY + range)) {
       return true;
@@ -24,4 +24,11 @@ const checkGuess = (e, characters) => {
   return false;
 };
 
-export { checkGuess };
+const getCircleStyle = (character) => {
+  return {
+    top: `calc(${character.y_coord / 10}% - 20px)`,
+    left: `calc(${character.x_coord / 10 - 1}% - 10px)`,
+  };
+};
+
+export { checkGuess, getCircleStyle };
