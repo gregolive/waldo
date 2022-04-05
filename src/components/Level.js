@@ -3,8 +3,8 @@ import '../styles/Level.css';
 import maps, { checkGuess } from '../helpers/helpers';
 
 const Level = () => {
-  const { mapId } = useParams();
-  const map = maps.filter((m) => m.id === mapId)[0];
+  const { mapSlug } = useParams();
+  const map = maps.filter((m) => m.id === mapSlug)[0];
 
   const handleClick = (e) => {
     const characterId = checkGuess(e, map);

@@ -1,15 +1,14 @@
 import '../styles/Home.css';
 import MapIcon from './MapIcon';
-import maps from '../helpers/helpers';
 
-const Home = () => {
+const Home = ({ maps }) => {
   return (
     <section className='Home'>
       <h2 className='Card TitleCard'>Choose a map to start!</h2>
 
       <div className='MapGrid'>
-        {maps.map((m) => 
-          <MapIcon map={m} key={m.id} />
+        {maps.map((map) => 
+          <MapIcon map={map} key={map.id} />
         )}
       </div>
     </section>

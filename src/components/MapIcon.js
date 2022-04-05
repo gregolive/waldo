@@ -3,16 +3,18 @@ import '@fortawesome/fontawesome-free/js/all';
 import '../styles/MapIcon.css';
 
 const MapIcon = ({ map }) => {
+  const { slug, name, difficulty } = map;
+
   return (
-    <Link to={map.id} className='Card MapIcon'>
-      <img src={map.img} alt={map.name}/>
+    <Link to={slug} className='Card MapIcon'>
+      <img src={require(`../img/maps/${slug}.jpeg`)} alt={name}/>
 
       <div className='MapInfo'>
         <span>
           Difficulty:
           &#160;
           <span className='Bubble Difficulty'>
-            {[...Array(map.difficulty)].map((d, i) => <i className='fa-solid fa-star' key={i}></i>)}
+            {[...Array(difficulty)].map((d, i) => <i className='fa-solid fa-star' key={i}></i>)}
           </span>
         </span>
 
@@ -20,12 +22,12 @@ const MapIcon = ({ map }) => {
           High score:
           &#160;
           <span className='Bubble HighScore'>
-            {map.highScore} s  
+            45 s  
           </span>
         </span>
       </div>
 
-      <h3>{map.name}</h3>
+      <h3>{name}</h3>
     </Link>
   );
 };
