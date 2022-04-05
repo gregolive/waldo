@@ -9,7 +9,7 @@ const Level = () => {
   const [loading, setLoading] = useState(true);
   const [map, setMap] = useState({});
   const [characters, setCharacters] = useState([]);
-  console.log(map);
+  const [found, setFound] = useState([]);
 
   // Fetch map data for selected level
   useEffect(() => {
@@ -20,7 +20,7 @@ const Level = () => {
     .then(data => setMap(data));
   }, [mapSlug]);
 
-  // Fetch character data when map updates and turn off loading
+  // When map updates fetch characters and turn off loading
   useEffect(() => {
     const characterUrl = `http://localhost:3001/api/v2/characters/${map.id}`;
   
@@ -32,10 +32,9 @@ const Level = () => {
   }, [map]);
 
   const handleClick = (e) => {
-    const characterId = checkGuess(e, map);
-    if (characterId) {
-      const target = map.characters.find((char) => char.id === characterId);
-      target.found = true;
+    const character = checkGuess(e, characters);
+    if (character && !found.includes(character.slug)) {
+      setFound(found.concat(character.slug));
     }
   };
 
@@ -66,7 +65,7 @@ const Level = () => {
           <div className='Characters'>
             {(characters) ? characters.map((character) =>
               <span key={character.id}>
-                <span className={(false) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
+                <span className={(found.includes(character.slug)) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
                 <img src={require(`../img/characters/${character.slug}.jpg`)} alt={character.name} />
               </span>
             ) : null}
