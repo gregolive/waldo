@@ -1,5 +1,4 @@
-import '../styles/Loading.css';
-import waldo from '../img/logo.png';
+import waldo from '../../img/logo.png';
 
 const Loading = () => {
   return (

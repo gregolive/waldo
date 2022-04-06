@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
-import '../styles/MapIcon.css';
 
 const MapIcon = ({ map }) => {
   const { slug, name, difficulty } = map;
 
   return (
     <Link to={slug} className='Card MapIcon'>
-      <img src={require(`../img/maps/${slug}.jpeg`)} alt={name}/>
+      <img src={require(`../../img/maps/${slug}.jpeg`)} alt={name}/>
 
       <div className='MapInfo'>
         <span>

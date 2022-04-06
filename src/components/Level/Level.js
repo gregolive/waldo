@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { checkGuess, getCircleStyle } from '../helpers/helpers';
-import '../styles/Level.css';
-import Loading from './Loading';
+import { checkGuess, getCircleStyle } from '../../helpers/helpers';
+import './Level.css';
+import Loading from '../Loading/Loading';
 import Timer from './Timer';
 
 const Level = () => {
@@ -11,7 +11,8 @@ const Level = () => {
   const [map, setMap] = useState({});
   const [characters, setCharacters] = useState([]);
   const [found, setFound] = useState([]);
-  const [circles, setCircles] = useState([]);
+  const [time, setTime] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
 
   // Fetch map data for selected level
   useEffect(() => {
@@ -33,12 +34,32 @@ const Level = () => {
     setLoading(false);
   }, [map]);
 
+  // Update timer every second until gameOver
+  useEffect(() => {
+    if (!gameOver) {
+      const interval = setInterval(() => { setTime(time + 1) }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [gameOver, time]);
+
+  // Check for gameover when a character is found
+  useEffect(() => {
+    if (found.length < 4) { return; }
+    setGameOver(true);
+  }, [found]);
+
+  const handleSuccessfulClick = (character) => {
+    setFound(found.concat({
+      slug: character.slug,
+      style: getCircleStyle(character),
+    }));
+  };
+
   const handleClick = (e) => {
     const character = checkGuess(e, characters);
-    if (character && !found.includes(character.slug)) {
-      setFound(found.concat(character.slug));
-      const newCircle = getCircleStyle(character);
-      setCircles(circles.concat(newCircle));
+    if (character && !found.includes((found) => found.slug === character.slug)) {
+      handleSuccessfulClick(character);
+      console.log('new')
     }
   };
 
@@ -67,20 +88,20 @@ const Level = () => {
 
         <div className='LevelMain'>
           <div className='Characters'>
-            <Timer />
+            <Timer time={time} />
             {(characters) ? characters.map((character) =>
               <span key={character.id}>
                 <span className={(found.includes(character.slug)) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
-                <img src={require(`../img/characters/${character.slug}.jpg`)} alt={character.name} />
+                <img src={require(`../../img/characters/${character.slug}.jpg`)} alt={character.name} />
               </span>
             ) : null}
           </div>
 
           <button type='button' className='MapButton' onClick={(e) => handleClick(e)}>
-            {circles.map((circle) =>
-              <img src={require('../img/circle.png')} alt='' className='Circle' style={circle.style} key={circle.id} />
+            {found.map((found) =>
+              <img src={require('../../img/circle.png')} alt='' className='Circle' style={found.style} key={found.slug} />
             )}
-            {(Object.keys(map).length > 0) ? <img src={require(`../img/maps/${map.slug}.jpeg`)} alt={map.name} className='Map' /> : null}
+            {(Object.keys(map).length > 0) ? <img src={require(`../../img/maps/${map.slug}.jpeg`)} alt={map.name} className='Map' /> : null}
           </button>
         </div>
       </div>

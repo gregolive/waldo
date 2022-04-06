@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import '../styles/Home.css';
+import './Home.css';
 import MapIcon from './MapIcon';
-import Loading from './Loading';
+import Loading from '../Loading/Loading';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);

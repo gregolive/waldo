@@ -26,11 +26,8 @@ const checkGuess = (e, characters) => {
 
 const getCircleStyle = (character) => {
   return {
-    id: character.id,
-    style: {
-      top: `calc(${character.y_coord / 10}% - 20px)`,
-      left: `calc(${character.x_coord / 10 - 1}% - 10px)`,
-    }
+    top: `calc(${character.y_coord / 10}% - 20px)`,
+    left: `calc(${character.x_coord / 10 - 1}% - 10px)`,
   };
 };
 

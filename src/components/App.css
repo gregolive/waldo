@@ -1,3 +1,5 @@
+/* Global */
+
 p {
   margin: 0;
 }
@@ -28,10 +30,18 @@ section {
   gap: 2rem;
 }
 
+@media screen and (max-width: 480px) {
+  section {
+    padding: 2rem 0;
+  }
+}
+
 button {
   border: none;
   padding: 0;
 }
+
+/* Site-wide */
 
 .Card {
   background: var(--white);
@@ -56,8 +66,49 @@ button {
   background: var(--blue);
 }
 
+/* Header and Footer */
+
+.SiteHeader {
+  background: var(--white);
+  border-bottom: 1px solid var(--black);
+  padding: 0 3vw;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+h1 {
+  color: var(--blue);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 var(--black),
+               -2px 3px 0 var(--gray);
+}
+
+h1 > span {
+  color: var(--red);
+}
+
 @media screen and (max-width: 480px) {
-  section {
-    padding: 2rem 0;
+  header {
+    padding: 0;
+    justify-content: center;
   }
+}
+
+footer {
+  background-color: var(--light-gray);
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer > p {
+  font-size: 0.9rem;
+}
+
+footer > p > a:hover {
+  text-decoration: underline;
 }
