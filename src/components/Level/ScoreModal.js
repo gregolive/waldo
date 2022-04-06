@@ -2,7 +2,7 @@ import logo from '../../img/logo.png';
 
 const ScoreModal = ({ time, mapId }) => {
   const formSubmit = (data) => {
-    const scoreUrl = 'http://localhost:3001/api/v3/scores';
+    const scoreUrl = 'http://localhost:3001/api/v1/scores';
     
     fetch(scoreUrl, {
       method: 'POST',

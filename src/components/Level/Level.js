@@ -17,7 +17,7 @@ const Level = () => {
 
   // Fetch map data for selected level and turn off loading
   useEffect(() => {
-    const mapUrl = `http://localhost:3001/api/v3/maps/${mapSlug}`;
+    const mapUrl = `http://localhost:3001/api/v1/maps/${mapSlug}`;
   
     fetch(mapUrl, {mode: 'cors'})
     .then(response => response.json())

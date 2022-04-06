@@ -20,7 +20,7 @@ const MapIcon = ({ map }) => {
           High score:
           &#160;
           <span className='Bubble HighScore'>
-            45 s  
+            {(map.scores.length > 0) ? `${map.scores[0].time} s` : 'N/A'}
           </span>
         </span>
       </div>
