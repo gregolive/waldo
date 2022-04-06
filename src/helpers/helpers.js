@@ -31,4 +31,9 @@ const getCircleStyle = (character) => {
   };
 };
 
-export { checkGuess, getCircleStyle };
+const checkFound = (found, character) => {
+  if (found.find((f) => f.slug === character.slug)) { return true; };
+  return false;
+};
+
+export { checkGuess, getCircleStyle, checkFound };

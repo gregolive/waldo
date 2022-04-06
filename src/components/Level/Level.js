@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { checkGuess, getCircleStyle } from '../../helpers/helpers';
+import { checkGuess, getCircleStyle, checkFound } from '../../helpers/helpers';
 import './Level.css';
 import Loading from '../Loading/Loading';
+import LevelHeader from './LevelHeader';
 import Timer from './Timer';
 
 const Level = () => {
@@ -57,41 +58,23 @@ const Level = () => {
 
   const handleClick = (e) => {
     const character = checkGuess(e, characters);
-    if (character && !found.includes((found) => found.slug === character.slug)) {
+    if (character && !checkFound(found, character)) {
+      console.log(checkFound(found, character))
       handleSuccessfulClick(character);
-      console.log('new')
     }
   };
 
   const levelScreen = (
     <section className='Level'>
       <div className='Card LevelCard'>
-        <header className='LevelHeader'>
-          <span>
-            Difficulty:
-            &#160;
-            <span className='Bubble Difficulty'>
-              {[...Array(map.difficulty)].map((d, i) => <i className='fa-solid fa-star' key={i}></i>)}
-            </span>
-          </span>
-
-          <h2>{map.name}</h2>
-
-          <span>
-            High score:
-            &#160;
-            <span className='Bubble HighScore'>
-              45 s  
-            </span>
-          </span>
-        </header>
+        <LevelHeader map={map} />
 
         <div className='LevelMain'>
           <div className='Characters'>
             <Timer time={time} />
             {(characters) ? characters.map((character) =>
               <span key={character.id}>
-                <span className={(found.includes(character.slug)) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
+                <span className={checkFound(found, character) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
                 <img src={require(`../../img/characters/${character.slug}.jpg`)} alt={character.name} />
               </span>
             ) : null}
