@@ -11,30 +11,20 @@ const Level = () => {
   const { mapSlug } = useParams();
   const [loading, setLoading] = useState(true);
   const [map, setMap] = useState({});
-  const [characters, setCharacters] = useState([]);
   const [found, setFound] = useState([]);
   const [time, setTime] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
-  // Fetch map data for selected level
+  // Fetch map data for selected level and turn off loading
   useEffect(() => {
     const mapUrl = `http://localhost:3001/api/v3/maps/${mapSlug}`;
   
     fetch(mapUrl, {mode: 'cors'})
     .then(response => response.json())
     .then(data => setMap(data));
-  }, [mapSlug]);
-
-  // When map updates fetch characters and turn off loading
-  useEffect(() => {
-    const characterUrl = `http://localhost:3001/api/v3/characters/${map.id}`;
-  
-    fetch(characterUrl, {mode: 'cors'})
-    .then(response => response.json())
-    .then(data => setCharacters(data));
 
     setLoading(false);
-  }, [map]);
+  }, [mapSlug]);
 
   // Update timer every second until gameOver
   useEffect(() => {
@@ -58,7 +48,7 @@ const Level = () => {
   };
 
   const handleClick = (e) => {
-    const character = checkGuess(e, characters);
+    const character = checkGuess(e, map.characters);
     if (character && !checkFound(found, character)) {
       handleSuccessfulClick(character);
     }
@@ -72,7 +62,7 @@ const Level = () => {
         <div className='LevelMain'>
           <div className='Characters'>
             <Timer time={time} />
-            {(characters) ? characters.map((character) =>
+            {(map.characters) ? map.characters.map((character) =>
               <span key={character.id}>
                 <span className={checkFound(found, character) ? 'Check Found' :'Check'}><i className='fa-solid fa-check'></i></span>
                 <img src={require(`../../img/characters/${character.slug}.jpg`)} alt={character.name} />
