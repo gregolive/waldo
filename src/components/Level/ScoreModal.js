@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router';
 import logo from '../../img/logo.png';
 
 const ScoreModal = ({ time, mapId }) => {
+  let navigate = useNavigate();
+
   const formSubmit = (data) => {
     const scoreUrl = 'http://localhost:3001/api/v1/scores';
     
@@ -19,6 +22,8 @@ const ScoreModal = ({ time, mapId }) => {
     formData.append('time', time);
     formData.append('map_id', mapId);
     formSubmit(formData);
+
+    navigate('/');
   };
   
   return (
