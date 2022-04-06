@@ -5,9 +5,9 @@ const ScoreModal = ({ time, mapId }) => {
   let navigate = useNavigate();
 
   const formSubmit = (data) => {
-    const scoreUrl = 'http://localhost:3001/api/v1/scores';
+    const apiURL = 'https://waldo-backend.herokuapp.com/api/v1/scores';
     
-    fetch(scoreUrl, {
+    fetch(apiURL, {
       method: 'POST',
       mode: 'cors',
       body: data,

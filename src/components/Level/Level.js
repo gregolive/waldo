@@ -15,16 +15,19 @@ const Level = () => {
   const [time, setTime] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
-  // Fetch map data for selected level and turn off loading
+  // Fetch map data for selected level
   useEffect(() => {
-    const mapUrl = `http://localhost:3001/api/v1/maps/${mapSlug}`;
+    const apiURL = `https://waldo-backend.herokuapp.com/api/v1/maps/${mapSlug}`;
   
-    fetch(mapUrl, {mode: 'cors'})
+    fetch(apiURL, {mode: 'cors'})
     .then(response => response.json())
     .then(data => setMap(data));
-
-    setLoading(false);
   }, [mapSlug]);
+
+  // Turn off loading when maps load
+  useEffect(() => {
+    if (Object.keys(map).length > 0) { setLoading(false); }
+  }, [map]);
 
   // Update timer every second until gameOver
   useEffect(() => {

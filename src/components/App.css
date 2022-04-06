@@ -40,6 +40,7 @@ button {
   font-family: 'Merriweather Sans', sans-serif;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 input {

@@ -7,16 +7,19 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [maps, setMaps] = useState([]);
 
-  // Fetch all map data on mount and turn off loading
+  // Fetch all map data on mount
   useEffect(() => {
-    const mapUrl = 'http://localhost:3001/api/v1/maps';
+    const apiURL = 'https://waldo-backend.herokuapp.com/api/v1/maps';
 
-    fetch(mapUrl, {mode: 'cors'})
+    fetch(apiURL, {mode: 'cors'})
     .then(response => response.json())
     .then(data => setMaps(data));
-
-    setLoading(false);
   }, []);
+
+  // Turn off loading when maps load
+  useEffect(() => {
+    if (maps.length > 0) { setLoading(false); }
+  }, [maps]);
 
   const homeScreen = (
     <section className='Home'>
