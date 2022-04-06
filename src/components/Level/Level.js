@@ -18,7 +18,7 @@ const Level = () => {
 
   // Fetch map data for selected level
   useEffect(() => {
-    const mapUrl = `http://localhost:3001/api/v2/maps/${mapSlug}`;
+    const mapUrl = `http://localhost:3001/api/v3/maps/${mapSlug}`;
   
     fetch(mapUrl, {mode: 'cors'})
     .then(response => response.json())
@@ -27,7 +27,7 @@ const Level = () => {
 
   // When map updates fetch characters and turn off loading
   useEffect(() => {
-    const characterUrl = `http://localhost:3001/api/v2/characters/${map.id}`;
+    const characterUrl = `http://localhost:3001/api/v3/characters/${map.id}`;
   
     fetch(characterUrl, {mode: 'cors'})
     .then(response => response.json())
@@ -60,7 +60,6 @@ const Level = () => {
   const handleClick = (e) => {
     const character = checkGuess(e, characters);
     if (character && !checkFound(found, character)) {
-      console.log(checkFound(found, character))
       handleSuccessfulClick(character);
     }
   };
@@ -89,7 +88,7 @@ const Level = () => {
           </button>
         </div>
       </div>
-      {(gameOver) ? <ScoreModal time={time} /> : null}
+      {(gameOver) ? <ScoreModal time={time} mapId={map.id} /> : null}
     </section>
   );
 

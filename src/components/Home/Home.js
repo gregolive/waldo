@@ -9,7 +9,7 @@ const Home = () => {
 
   // Fetch all map data on mount and turn off loading
   useEffect(() => {
-    const mapUrl = 'http://localhost:3001/api/v1/maps';
+    const mapUrl = 'http://localhost:3001/api/v3/maps';
 
     fetch(mapUrl, {mode: 'cors'})
     .then(response => response.json())
