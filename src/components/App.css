@@ -9,7 +9,7 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   margin: 0;
 }
 
@@ -37,8 +37,17 @@ section {
 }
 
 button {
+  font-family: 'Merriweather Sans', sans-serif;
   border: none;
   padding: 0;
+}
+
+input {
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+input:focus {
+  outline: none;
 }
 
 /* Site-wide */

@@ -5,6 +5,7 @@ import './Level.css';
 import Loading from '../Loading/Loading';
 import LevelHeader from './LevelHeader';
 import Timer from './Timer';
+import ScoreModal from './ScoreModal';
 
 const Level = () => {
   const { mapSlug } = useParams();
@@ -88,6 +89,7 @@ const Level = () => {
           </button>
         </div>
       </div>
+      {(gameOver) ? <ScoreModal time={time} /> : null}
     </section>
   );
 
