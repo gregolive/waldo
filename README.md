@@ -17,7 +17,7 @@ Search for Waldo and friends in this online version of the classic books.
 
 ## Reflection
 
-Completing a full-stack project using seperate technologies for the frontend and the backend was an great experience. For the most part the development of this project went smoothly, but I ran into some trouble when trying to send a <code>Post</code> request to the rails waldo_api from React. I was able to fix this issue by altering my approach on both the frontend and backend:
+Completing a full-stack project using seperate technologies for the frontend and the backend was a great experience. For the most part the development of this project went smoothly, but I ran into some trouble when trying to send a <code>Post</code> request to the rails waldo_api from React. I was able to fix this issue by altering my approach on both the frontend and backend:
 
 - In React I created an empty formData object with <code>new FormData()</code> and added the required data with <code>formData.append()</code>
 - In Rails I updated the Scores controller create method by changing the render location to <code>api_v1_scores_path(@score)</code> and removed <code>require(:score)</code> from the score_params as seen below:
